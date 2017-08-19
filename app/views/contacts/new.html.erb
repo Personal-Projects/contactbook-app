@@ -1,0 +1,12 @@
+<div id="newWell" class="well">
+
+  <%= form_tag "/contacts", method: :post do %>
+    <p><label>First Name:</label><input type="text" name="first_name"></p>
+    <p><label>Middle Name:</label><input type="text" name="middle_name"></p>
+    <p><label>Last Name:</label><input type="text" name="last_name"></p>
+    <p><label>Number:</label><input type="text" name="number"></p>
+    <p><label>Email:</label><input type="text" name="email"></p>
+    <p><label>Greek God House:</label><input type="text" name="bio"></p>
+  <% end %>
+
+</div>

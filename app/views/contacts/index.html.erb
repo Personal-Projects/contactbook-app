@@ -1,0 +1,16 @@
+
+  <div class="row">
+    <% @contacts.each_slice(3) do |three_contacts| %>
+
+      <% three_contacts.each do |contact| %>  
+        <div class="col-md-4">
+          <div id="indexWell" class="well">
+            <h4><%= contact.full_name %></h4>
+            <p>Number: <%= contact.number %></p>
+            <p>Email: <%= contact.full_email %></p>
+            <p>Greek God House: <%= contact.bio %></p>
+          </div>
+        </div>    
+          <% end %>
+    <% end %>
+  </div>
