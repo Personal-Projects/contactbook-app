@@ -5,10 +5,11 @@
       <% three_contacts.each do |contact| %>  
         <div class="col-md-4">
           <div id="indexWell" class="well">
-            <h4><%= contact.full_name %></h4>
+            <h4><a href="/contacts/<%= contact.id %>"><font color="black"><%= contact.full_name %></font></a></h4>
             <p>Number: <%= contact.number %></p>
             <p>Email: <%= contact.full_email %></p>
             <p>Greek God House: <%= contact.bio %></p>
+            <p>Id: <%= contact.id %></p>
           </div>
         </div>    
           <% end %>

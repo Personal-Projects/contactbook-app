@@ -1,0 +1,14 @@
+<div id="newWell" class="well">
+
+  <%= form_tag "/contacts", method: :post do %>
+    <h4><%= @contact.full_name %></h4>
+    <p>Number: <%= @contact.number %></p>
+    <p>Email: <%= @contact.full_email %></p>
+    <p>Greek God House: <%= @contact.bio %></p>
+  <% end %>
+
+  <br>
+  &emsp;&emsp;<%= link_to "Edit", "/products/#{@contact.id}/edit", class: "btn btn-success" %>
+  <%= link_to "Delete", "/products/#{@contact.id}", {method: :delete, class: "btn btn-danger" }%>
+
+</div>
