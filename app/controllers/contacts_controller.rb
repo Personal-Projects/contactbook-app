@@ -1,7 +1,11 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
-    render "index.html.erb"
+    if current_user
+      @contacts = current_user.contacts
+    else
+      flash[:warning] = "You are not logged in."
+      redirect_to '/login'
+    end
   end
 
   def new
@@ -9,28 +13,34 @@ class ContactsController < ApplicationController
   end
 
   def create
-    address = params[:address]
-    coordinates = Geocoder.coordinates(address)
-    input_latitude = coordinates[0]
-    input_longitude = coordinates[1]
-    contact = Contact.create(
+      address = params[:address]
+      # coordinates = Geocoder.coordinates(address)
+      # input_latitude = coordinates[0]
+      # input_longitude = coordinates[1]
+    @contact = Contact.create(
       first_name: params[:first_name],
+      middle_name: params[:middle_name],
       last_name: params[:last_name],
-      email: params[:email],
-      phone: params[:phone],
-      latitude: input_latitude,
-      longitude: input_longitude
+      number: params[:number],
+      bio: params[:bio]
+      # latitude: input_latitude,
+      # longitude: input_longitude
     )
     flash[:success] = "Student added!"
-    redirect_to "/contacts"
+    redirect_to "/contacts/#{@contact.id}"
   end
 
   def show
     @contact = Contact.find_by(id: params[:id])
+    if current_user && @current_user.id == @contact.user_id
     render "show.html.erb"
+    else
+      redirect_to '/login'
+    end
   end
 
   def edit
+    @contact = Contact.find_by(id: params[:id])
     render "edit.html.erb"
   end
 
@@ -41,16 +51,16 @@ class ContactsController < ApplicationController
       middle_name: params[:middle_name],
       last_name: params[:last_name],
       number: params[:number],
-      email: params[:email],
       bio: params[:bio]
     )
-    redirect_to "/contacts"
+    flash[:success] = "Student updated!"
+    redirect_to "/contacts/#{@contact.id}"
   end
 
   def destroy
     @contact = Contact.find_by(id: params[:id])
     @contact.destroy
-    flash[:warning] = "Contact deleted."
+    flash[:success] = "Student deleted."
     redirect_to "/contacts"
   end
 end

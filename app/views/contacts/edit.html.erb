@@ -1,0 +1,13 @@
+<div id="editWell" class="well">
+
+  <%= form_tag "/contacts/#{@contact.id}", method: :patch do %>
+    <p><label>First Name:</label>&emsp;<input type="text" name="name" value="<%= @contact.first_name %>" size="25"></p>
+    <p><label>Middle Name:</label>&emsp;<input type="text" name="name" value="<%= @contact.middle_name %>" size="25"></p>
+    <p><label>Last Name:</label>&emsp;<input type="text" name="name" value="<%= @contact.last_name %>" size="25"></p>
+    <p><label>Number:</label>&emsp;<input type="text" name="name" value="<%= @contact.number %>" size="25"></p>
+    <p><label>Bio:</label>&emsp;<input type="text" name="name" value="<%= @contact.bio %>" size="25"></p>
+    <br>
+    <p style="text-align:center;"><font color="black"><input type="submit" value="Update Student"></font></p>
+  <% end %>
+
+</div>
