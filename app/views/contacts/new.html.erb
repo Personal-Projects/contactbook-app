@@ -1,12 +1,36 @@
+<h1>Add Student</h1>
+
 <div id="newWell" class="well">
 
   <%= form_tag "/contacts", method: :post do %>
-    <p><label>First Name:</label><input type="text" name="first_name"></p>
-    <p><label>Middle Name:</label><input type="text" name="middle_name"></p>
-    <p><label>Last Name:</label><input type="text" name="last_name"></p>
-    <p><label>Number:</label><input type="text" name="number"></p>
-    <p><label>Greek God House:</label><input type="text" name="bio"></p>
-    <p><font color="black"><input type="submit" value="Create Student"></font></p>
-  <% end %>
+  <div>
+    <%= label_tag :first_name %>
+    <%= text_field_tag :first_name %>
+  </div>
+  <br>
+  <div>
+    <%= label_tag :middle_name %>
+    <%= text_field_tag :middle_name %>
+  </div>
+  <br>
+  <div>
+    <%= label_tag :last_name %>
+    <%= text_field_tag :last_name %>
+  </div>
+  <br>
+  <div>
+    <%= label_tag :number %>
+    <%= text_field_tag :number %>
+  </div>
+  <br>
+  <div>
+    <%= label_tag :"Greek God House" %>
+    <%= text_field_tag :bio %>
+  </div>
+  <br>
+  <div>
+    <%= submit_tag "Add Student" %>
+  </div>
+<% end %>
 
 </div>

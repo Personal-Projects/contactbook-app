@@ -22,7 +22,8 @@ class ContactsController < ApplicationController
       middle_name: params[:middle_name],
       last_name: params[:last_name],
       number: params[:number],
-      bio: params[:bio]
+      bio: params[:bio],
+      user_id: current_user.id
       # latitude: input_latitude,
       # longitude: input_longitude
     )
