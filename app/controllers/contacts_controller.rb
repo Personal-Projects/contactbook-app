@@ -1,11 +1,16 @@
 class ContactsController < ApplicationController
   def index
-    if current_user
-      @contacts = current_user.contacts
+    if params[:group]
+      @contacts = Group.find_by(name: params[:group]).contacts.where(user_id: current_user.id)
     else
-      flash[:warning] = "You are not logged in."
-      redirect_to '/login'
+      @contacts = current_user.contacts
     end
+    # if current_user
+    #   @contacts = current_user.contacts
+    # else
+    #   flash[:warning] = "You are not logged in."
+    #   redirect_to '/login'
+    # end
   end
 
   def new
